@@ -13,14 +13,13 @@ int main(int argc, const char* argv[]){
 	//	ts = Timestamp::getCurrentTS();
 	//	cout << ts << endl;
 	//}
+	string id;
+	cout << "Veuillez rentrer l'identifiant : ";
+	cin >> id;
+	string* cle = Trousseau::getCle(id);
 
-	if (Trousseau::getCle("lol") != nullptr) {
-	//cout << *Trousseau::getCle("lol");
+	if (cle != nullptr) {
+		cout << "Cle : " << *cle << endl;
 	}
-	else {
-		cout << "Erreur" << endl;
-	}
-	//cout << argv[1] << endl;
-	
 	system("PAUSE");
 }
