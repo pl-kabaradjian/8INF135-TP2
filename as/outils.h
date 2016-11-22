@@ -5,7 +5,7 @@
 
 using namespace std;
 
-vector<string> SepareChaine(string chaine)
+vector<string> separeChaine(string chaine)
 {
 	vector<string> sortie;
 	string chaineTemp;

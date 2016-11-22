@@ -19,11 +19,23 @@ int main(int argc, const char* argv[]){
 		cout << "Cle : " << *cle << endl;
 	}*/
 	string message = "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz";
-	cout << message << endl;
-	string chiffrai = chiffrement("bonjour", message);
-	cout << chiffrai << endl;
-	cout << dechiffrement("bonjour", chiffrai) << endl;
+	string cle = "Bonjour";
 
+	//Verification des chaines en entree
+	bool ck_cle = verifString(cle);
+	bool ck_msg = verifString(message);
+	if (!ck_cle) {
+		cout << "Error : Unauthorized char in cipher key" << endl;
+	}
+	if (!ck_msg) {
+		cout << "Error : Unauthorized char in ciphered message" << endl;
+	}
+	if (ck_cle && ck_msg) {
+		cout << message << endl;
+		string chiffrai = chiffrer(cle, message);
+		cout << chiffrai << endl;
+		cout << dechiffrer(cle, chiffrai) << endl;
+	}
 	system("PAUSE");
 }
 

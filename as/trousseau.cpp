@@ -58,8 +58,6 @@ map<string, string> Trousseau::getTrousseau()
 	return map_trousseau;
 }
 
-
-
 string* Trousseau::getCle(string identifiant)
 {
 	map<string, string> trousseau = Trousseau::getTrousseau();
