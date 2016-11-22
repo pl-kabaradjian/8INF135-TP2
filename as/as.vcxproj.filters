@@ -21,6 +21,12 @@
     <ClInclude Include="trousseau.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="chiffrement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="outils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="timestamp.cpp">

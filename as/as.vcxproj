@@ -148,6 +148,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="chiffrement.h" />
+    <ClInclude Include="outils.h" />
     <ClInclude Include="timestamp.h" />
     <ClInclude Include="trousseau.h" />
   </ItemGroup>
