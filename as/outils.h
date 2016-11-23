@@ -25,3 +25,17 @@ vector<string> separeChaine(string chaine)
 	sortie.push_back(chaineTemp);
 	return sortie;
 }
+
+void erreur(const std::string& message)
+{
+	std::cerr << "Erreur : ";
+	std::cerr << message << std::endl;
+}
+
+void verif_argc(int argc, int nb) {
+	if (argc != nb)
+	{
+		erreur("Mauvais nombre d'arguments");
+		exit(-1);
+	}
+}
