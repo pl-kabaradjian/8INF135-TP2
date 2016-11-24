@@ -36,6 +36,7 @@ void verif_argc(int argc, int nb) {
 	if (argc != nb)
 	{
 		erreur("Mauvais nombre d'arguments");
+		system("PAUSE");
 		exit(-1);
 	}
 }

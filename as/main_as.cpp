@@ -8,16 +8,35 @@
 
 using namespace std;
 
+map<string, string> trousseau;
+
+bool Existe(string id) {
+	if (trousseau.find(id) == trousseau.end())
+	{
+		cout << "Erreur : L'identifiant n'existe pas" << endl;
+		return false;
+	}
+	else return true;
+}
+
+string construireTicketTgs(vector<string> inputs) {
+	return string(inputs[0] + "#" + inputs[1] + "#" + inputs[2] + "#" + (char)Timestamp::getCurrentTS() + "#3600");
+}
+
 int main(int argc, const char* argv[]){
+	trousseau = Trousseau::getTrousseau();
 	// Verif rapide des arguments
 	verif_argc(argc,2);
 
 	//IDClient#Adresse#IDtgs
 	vector<string> inputs = separeChaine(argv[1]);
+
+	//recuperation du trousseau
 	
-	if (clientExiste(inputs[0]) && tgsExiste(inputs[2])) {//TODO
+	
+	if (Existe(inputs[0]) && Existe(inputs[2])) {//TODO
 		string ticket = construireTicketTgs(inputs);//TODO
-		cout << chiffrer(Trousseau::getCle(inputs[0]),ticket) << endl;//TODO
+		cout << chiffrer(*Trousseau::getCle(inputs[0]),ticket) << endl;//TODO
 	}
 	else
 	{
