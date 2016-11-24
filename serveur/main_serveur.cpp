@@ -24,9 +24,7 @@ int main(int argc, const char* argv[]) {
 	}
 	else
 	{
-		erreur("Caractere indesirable dans le ticket avant dechiffrement");
-		system("PAUSE");
-		exit(-1);
+		erreur_and_quit("Caractere indesirable dans le ticket avant dechiffrement");
 	}
 
 	if (verifString(ticket))
@@ -35,16 +33,12 @@ int main(int argc, const char* argv[]) {
 	}
 	else
 	{
-		erreur("Caractere indesirable dans le ticket apres dechiffrement");
-		system("PAUSE");
-		exit(-1);
+		erreur_and_quit("Caractere indesirable dans le ticket apres dechiffrement");
 	}
 
 	if (parsed_ticket.size() != 5)
 	{
-		erreur("Ticket non dechiffrable");
-		system("PAUSE");
-		exit(-1);
+		erreur_and_quit("Ticket non dechiffrable");
 	}
 
 	//Verification des champs du ticket
@@ -59,38 +53,26 @@ int main(int argc, const char* argv[]) {
 
 	if (idc != ticket_idc)
 	{
-		erreur("IDClients differents");
-		system("PAUSE");
-		exit(-1);
+		erreur_and_quit("IDClients differents");
 	}
 	else if (adc != ticket_adc)
 	{
-		erreur("Adresses differentes");
-		system("PAUSE");
-		exit(-1);
+		erreur_and_quit("Adresses differentes");
 	}
 	else if (ticket_idv != nom)
 	{
-		erreur("Ce ticket n'est pas pour ce serveur");
-		system("PAUSE");
-		exit(-1);
+		erreur_and_quit("Ce ticket n'est pas pour ce serveur");
 	}
 	else if (nom != idv) {
-		erreur("Vous ne vous addressez pas au bon serveur");
-		system("PAUSE");
-		exit(-1);
+		erreur_and_quit("Vous ne vous addressez pas au bon serveur");
 	}
 	else if (stol(ticket_ts2) > Timestamp::getCurrentTS())
 	{
-		erreur("Temps incoherent");
-		system("PAUSE");
-		exit(-1);
+		erreur_and_quit("Temps incoherent");
 	}
 	else if ((stol(ticket_ts2) + stol(ticket_duree2)) < Timestamp::getCurrentTS())
 	{
-		erreur("Le ticket est expire");
-		system("PAUSE");
-		exit(-1);
+		erreur_and_quit("Le ticket est expire");
 	}
 	else {
 		cout << "OK" << endl;

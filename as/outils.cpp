@@ -5,6 +5,13 @@ void erreur(const std::string& message)
 	cerr << "Erreur : " << message << endl;
 }
 
+void erreur_and_quit(const std::string& message)
+{
+	cerr << "Erreur : " << message << endl;
+	system("PAUSE");
+	exit(-1);
+}
+
 vector<string> separeChaine(string chaine, int max)
 {
 	vector<string> sortie;
@@ -16,7 +23,7 @@ vector<string> separeChaine(string chaine, int max)
 		{
 			chaineTemp += chaine[i];
 		}
-		else if (sortie.size() < max){
+		else if ((int)sortie.size() < max){
 			sortie.push_back(chaineTemp);
 			chaineTemp = "";
 		}
@@ -32,17 +39,13 @@ vector<string> separeChaine(string chaine, int max)
 void verif_argc(int argc, int nb) {
 	if (argc != nb)
 	{
-		erreur("Mauvais nombre d'arguments");
-		system("PAUSE");
-		exit(-1);
+		erreur_and_quit("Mauvais nombre d'arguments");
 	}
 }
 
 void verif_inputs(vector<string> inputs, int nb) {
 	if ((int)inputs.size() != nb)
 	{
-		erreur("Mauvais nombre d'elements dans la chaine");
-		system("PAUSE");
-		exit(-1);
+		erreur_and_quit("Mauvais nombre d'elements dans la chaine");
 	}
 }
