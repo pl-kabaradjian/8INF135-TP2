@@ -15,5 +15,4 @@ public:
 	static string* getCle(string identifiant);
 	static bool existe(string id);
 };
-
 #endif
