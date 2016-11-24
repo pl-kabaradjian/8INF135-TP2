@@ -1,46 +1,44 @@
 #include "timestamp.h"
 #include "trousseau.h"
-#include <Windows.h>
-#include <iostream>
 #include "outils.h"
 #include "chiffrement.h"
+#include <Windows.h>
+#include <iostream>
 //#include <boost/thread/thread.hpp>
 
 using namespace std;
 
-map<string, string> trousseau;
-
-bool Existe(string id) {
-	if (trousseau.find(id) == trousseau.end())
-	{
-		cout << "Erreur : L'identifiant n'existe pas" << endl;
-		return false;
-	}
-	else return true;
-}
-
 string construireTicketTgs(vector<string> inputs) {
-	return string(inputs[0] + "#" + inputs[1] + "#" + inputs[2] + "#" + (char)Timestamp::getCurrentTS() + "#3600");
+	//IDC||ADC||IDtgs||TS1||Duree1
+	return string(inputs[0] + "#" + inputs[1] + "#" + inputs[2] + "#" + to_string(Timestamp::getCurrentTS()) + "#60");
 }
 
 int main(int argc, const char* argv[]){
-	trousseau = Trousseau::getTrousseau();
+	//lecture du trousseau
+	Trousseau::getTrousseau();
+	
 	// Verif rapide des arguments
 	verif_argc(argc,2);
 
-	//IDClient#Adresse#IDtgs
-	vector<string> inputs = separeChaine(argv[1]);
-
-	//recuperation du trousseau
+	//Parsing des inputs = IDClient#Adresse#IDtgs
+	vector<string> inputs = separeChaine(argv[1],2);
+	verif_inputs(inputs, 3);
 	
-	
-	if (Existe(inputs[0]) && Existe(inputs[2])) {//TODO
-		string ticket = construireTicketTgs(inputs);//TODO
-		cout << chiffrer(*Trousseau::getCle(inputs[0]),ticket) << endl;//TODO
+	if (Trousseau::existe(inputs[0]) && Trousseau::existe(inputs[2])) {
+		string ticket = construireTicketTgs(inputs);
+		cout << ticket << endl;
+		if (check_and_cipher(*Trousseau::getCle(inputs[2]), &ticket))
+		{
+			cout << "Voici le TGT : " << ticket << endl;
+		}
+		else
+		{
+			erreur("Erreur lors du chiffrement du ticket");
+		}
 	}
 	else
 	{
-		cout << "Client ou TGS inconnu" << endl;
+		erreur("Client ou TGS inconnu");
 	}
 
 	system("PAUSE");
@@ -65,20 +63,20 @@ int main(int argc, const char* argv[]){
 	}*/
 
 //UTILISATION CHIFFREMENT
-	////Verification des chaines en entree
+	//Verification des chaines en entree
 	//string message = "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz";
 	//string cle = "Bonjour";
-	//bool ck_cle = verifString(cle);
-	//bool ck_msg = verifString(message);
-	//if (!ck_cle) {
-	//	cout << "Error : Unauthorized char in cipher key" << endl;
-	//}
-	//if (!ck_msg) {
-	//	cout << "Error : Unauthorized char in ciphered message" << endl;
-	//}
-	//if (ck_cle && ck_msg) {
-	//	cout << message << endl;
-	//	string chiffrai = chiffrer(cle, message);
-	//	cout << chiffrai << endl;
-	//	cout << dechiffrer(cle, chiffrai) << endl;
-	//}
+	/*bool ck_cle = verifString(cle);
+	bool ck_msg = verifString(message);
+	if (!ck_cle) {
+		cout << "Error : Unauthorized char in cipher key" << endl;
+	}
+	if (!ck_msg) {
+		cout << "Error : Unauthorized char in ciphered message" << endl;
+	}
+	if (ck_cle && ck_msg) {
+		cout << message << endl;
+		string chiffrai = chiffrer(cle, message);
+		cout << chiffrai << endl;
+		cout << dechiffrer(cle, chiffrai) << endl;
+	}*/

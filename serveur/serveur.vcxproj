@@ -146,6 +146,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\as\chiffrement.cpp" />
+    <ClCompile Include="..\as\outils.cpp" />
+    <ClCompile Include="..\as\timestamp.cpp" />
     <ClCompile Include="main_serveur.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -35,6 +35,12 @@
     <ClCompile Include="main_as.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="chiffrement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="outils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="trousseau.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

@@ -146,6 +146,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\as\chiffrement.cpp" />
+    <ClCompile Include="..\as\outils.cpp" />
+    <ClCompile Include="..\as\timestamp.cpp" />
+    <ClCompile Include="..\as\trousseau.cpp" />
     <ClCompile Include="main_tgt.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

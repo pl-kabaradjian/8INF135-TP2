@@ -154,7 +154,9 @@
     <ClInclude Include="trousseau.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="chiffrement.cpp" />
     <ClCompile Include="main_as.cpp" />
+    <ClCompile Include="outils.cpp" />
     <ClCompile Include="timestamp.cpp" />
     <ClCompile Include="trousseau.cpp" />
   </ItemGroup>
