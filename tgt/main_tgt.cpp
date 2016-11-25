@@ -28,7 +28,6 @@ int main(int argc, const char* argv[]) {
 	if (verifString(inputs[3]))
 	{
 		ticket = dechiffrer(cle, inputs[3]);//IDC||ADC||IDtgs||TS1||Duree1
-		cout << ticket << endl;
 	}
 	else
 	{
@@ -89,7 +88,7 @@ int main(int argc, const char* argv[]) {
 			string ticket = construireTicketServeur(inputs);
 			if (check_and_cipher(*Trousseau::getCle(idv), &ticket))
 			{
-				cout << "Voici le ticket : " << ticket << endl;
+				cout << "Voici le ticket : " << add_escape_chars(ticket) << endl;
 			}
 			else
 			{

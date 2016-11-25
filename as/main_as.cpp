@@ -29,7 +29,7 @@ int main(int argc, const char* argv[]){
 		cout << ticket << endl;
 		if (check_and_cipher(*Trousseau::getCle(inputs[2]), &ticket))
 		{
-			cout << "Voici le TGT : " << ticket << endl;
+			cout << "Voici le TGT : " << add_escape_chars(ticket) << endl;
 		}
 		else
 		{

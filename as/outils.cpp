@@ -49,3 +49,29 @@ void verif_inputs(vector<string> inputs, int nb) {
 		erreur_and_quit("Mauvais nombre d'elements dans la chaine");
 	}
 }
+
+string add_escape_chars(string chaine) {
+	map<char, string> table;
+	string sortie;
+	table['^'] = "^^";
+	table['&'] = "^&";
+	table['<'] = "^<";
+	table['>'] = "^>";
+	//table['%'] = "%%";
+	table['\\'] = "\\\\";
+	table['['] = "\\[";
+	table[']'] = "\\[";
+	table['\"'] = "\\\"";
+
+	//remplacement des chars
+	int taille = (int)chaine.size();
+	for (int i = 0 ; i < taille; i++) {
+		if (table.find(chaine[i]) == table.end()) {
+			sortie += chaine[i];
+		}
+		else {
+			sortie += table[chaine[i]];
+		}	
+	}
+	return sortie;
+}

@@ -13,5 +13,6 @@ void erreur_and_quit(const std::string& message);
 vector<string> separeChaine(string chaine, int max);
 void verif_argc(int argc, int nb);
 void verif_inputs(vector<string> inputs, int nb);
+string add_escape_chars(string chaine);
 
 #endif
